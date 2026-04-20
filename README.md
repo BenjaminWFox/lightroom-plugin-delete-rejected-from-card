@@ -1,5 +1,7 @@
 # Adobe Lightroom Classic Plugin: Delete Rejected From Card
 
+This plugin scans a Lightroom folder (optionally it's child folders as well) to find all Rejected images. Then it scans some other folder (which you select) **AND** all of that folders child folders. For every filename found in this other folder which matches a rejected image filename found in the lightroom folder, the plugin deletes that image from the other (non-lightroom) folder. This does not delete (or do anything at all) to any of your photos in Lightroom.
+
 ## ⚠️ WARNING ⚠️ ##
 **Full disclosure:** While I write software for a living, and I have tested this against my own cards/catalog, I do not know Lua and this was written by AI under my direction. 
 
