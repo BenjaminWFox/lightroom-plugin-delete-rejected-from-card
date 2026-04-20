@@ -5,7 +5,7 @@ This plugin scans a Lightroom folder (optionally it's child folders as well) to 
 ## ⚠️ WARNING ⚠️ ##
 **Full disclosure:** While I write software for a living, and I have tested this against my own cards/catalog, I do not know Lua and this was written by AI under my direction. 
 
-***Use at your own risk***
+***🚨 Use at your own risk 🚨***
 
 ## Plugin ##
 There have been several posts over years asking about available of this feature:
