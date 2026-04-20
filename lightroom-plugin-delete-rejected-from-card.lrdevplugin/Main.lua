@@ -1,11 +1,19 @@
 local LrDialogs = import "LrDialogs"
 local LrFunctionContext = import "LrFunctionContext"
+local LrPathUtils = import "LrPathUtils"
 local LrTasks = import "LrTasks"
 
 local ScanRejected = require "ScanRejected"
 local ScanExternal = require "ScanExternal"
 local MatchAndDelete = require "MatchAndDelete"
 local UI = require "UI"
+
+local function pathsReferToSameFolder(pathA, pathB)
+    if not pathA or not pathB then
+        return false
+    end
+    return LrPathUtils.standardizePath(pathA) == LrPathUtils.standardizePath(pathB)
+end
 
 --[[
     showModalProgressDialog(functionContext = X) ties the modal's lifetime to X.
@@ -24,6 +32,15 @@ local function runWorkflow()
 
     local externalRootPath = UI.promptExternalRoot()
     if not externalRootPath then
+        return
+    end
+
+    if pathsReferToSameFolder(sourceSelection.sourceFolderPath, externalRootPath) then
+        LrDialogs.message(
+            "Same folder selected",
+            "The external volume root cannot be the same folder as the Lightroom catalog source folder.\n\nChoose your memory card or another drive/folder.",
+            "critical"
+        )
         return
     end
 
